@@ -1,0 +1,40 @@
+application super user
+
+lima
+lima@123
+sammiha321@gmail.com
+
+User app data bases mode:
+    user:
+    name:
+    dob:
+    email:
+    date_created
+    
+
+online book Recommendations model:
+Databse Model:
+    Title:
+    Author Name:
+    Genre:
+    sysnopsis:
+    Image URL:
+    Rating:
+
+Recommendations:
+    Based on user profile:
+    Based on user profile rating:
+
+
+
+
+Work process:
+Book e click krle form dibo:
+
+1:status: Planning : Reading : Finished : Droped
+2. Rating : Yes or No : Start rating
+
+
+
+
+

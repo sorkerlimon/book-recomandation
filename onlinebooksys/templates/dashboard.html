@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      <title>PagePal</title>
+      <meta name="robots" content="noindex, nofollow">
+      <meta content="" name="description">
+      <meta content="" name="keywords">
+      <link href=" {% static 'static2/assets/img/myreports.png' %} " rel="icon">
+      <link href="  {% static 'static2/assets/img/myreports.png' %} " rel="apple-touch-icon">
+      <link href="https://fonts.gstatic.com" rel="preconnect">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+      <link href=" {% static 'static2/assets/css/bootstrap.min.css' %} " rel="stylesheet">
+      <link href=" {% static 'static2/assets/css/bootstrap-icons.css' %} " rel="stylesheet">
+      <link href=" {% static 'static2/assets/css/boxicons.min.css' %} " rel="stylesheet">
+      <link href=" {% static 'static2/assets/css/quill.snow.css' %} " rel="stylesheet">
+      <link href=" {% static 'static2/assets/css/quill.bubble.css' %}" rel="stylesheet">
+      <link href=" {% static 'static2/assets/css/remixicon.css' %}" rel="stylesheet">
+      <link href=" {% static 'static2/assets/css/simple-datatables.css' %}" rel="stylesheet">
+      <link href=" {% static 'static2/assets/css/style.css' %}" rel="stylesheet">  
+
+      <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">   
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+
+    
+  
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'assets/vendor/aos/aos.css' %} " rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %} " rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %} " rel="stylesheet">
+    <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %} " rel="stylesheet">
+    <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %} " rel="stylesheet">
+    <link href="{% static 'assets/vendor/remixicon/remixicon.css' %} " rel="stylesheet">
+    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %} " rel="stylesheet">
+  
+    <!-- Template Main CSS File -->
+    <link href="{% static 'assets/css/style.css' %} " rel="stylesheet">
+   </head>
+   <body>
+    {% include 'navbar.html' %}
+    <div class="container">
+  <main id="main" class="main">
+
+
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+          <div class="row">
+
+            <!-- Sales Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card sales-card">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Books <span>| Total</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-book"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{total}}</h6>
+                      <span class="text-success small pt-1 fw-bold"> </span> <span class="text-muted small pt-2 ps-1"> </span>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Sales Card -->
+
+            <!-- Revenue Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card revenue-card">
+
+                <div class="card-body">
+                  <h5 class="card-title">Books <span>| Planning To Read</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-book-half"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{planning}}</h6>
+                      <span class="text-success small pt-1 fw-bold"> </span> <span class="text-muted small pt-2 ps-1"> </span>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Revenue Card -->
+
+            <!-- Customers Card -->
+            <div class="col-xxl-4 col-xl-12">
+
+              <div class="card info-card customers-card">
+
+                <div class="card-body">
+                  <h5 class="card-title">Books <span>| Finished Reading</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-book-fill"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{finished}}</h6>
+                      <span class="text-danger small pt-1 fw-bold"> </span> <span class="text-muted small pt-2 ps-1"> </span>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div><!-- End Customers Card -->
+
+          
+
+            <!-- Recent Sales -->
+            <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+                <h5 class="card-title"> <div class='text-center'>Book Recommendation</div></h5>
+
+                <div class="card-body">
+                  
+                  <ul class="nav nav-tabs nav-tabs-bordered">
+                    <li class="nav-item"> <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Recommendation 1</button></li>
+                    <li class="nav-item"> <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Recommendation 2</button></li>
+                    <li class="nav-item"> <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Recommendation 3</button></li>
+                    <li class="nav-item"> <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Recommendation 4</button></li>
+                    <li class="nav-item"> <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password2">Recommendation 5</button></li>
+                </ul>
+
+                <div class="tab-content pt-2">
+                  <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                   <div class="card">
+                     <h5 class="card-header"><b>{{ book1.volumeInfo.title }} </b>({{book.publish_date}})</h5>
+                     <div class="card-body">
+                       <h5 class="card-title"><i>{{ book1.volumeInfo.authors }}</i></h5>
+                       <p class="card-text">{{ book1.volumeInfo.description }}</p>
+                       {% comment %} <a href="{% url 'book_details' book_id=book.book_id %}" class="btn btn-primary">See Details</a> {% endcomment %}
+                     </div>
+                   </div>
+                  </div>
+
+
+                  <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+                   <div class="card">
+                     <h5 class="card-header"><b>{{ book2.volumeInfo.title }} </b>({{book.publish_date}})</h5>
+                     <div class="card-body">
+                       <h5 class="card-title"><i>{{ book2.volumeInfo.authors }}</i></h5>
+                       <p class="card-text">{{ book2.volumeInfo.description }}</p>
+                       {% comment %} <a href="{% url 'book_details' book_id=book.book_id %}" class="btn btn-primary">See Details</a> {% endcomment %}
+                     </div>
+                   </div>
+                   </div>
+
+
+
+                   <div class="tab-pane fade pt-3" id="profile-settings">
+                               
+
+                     <div class="card">
+                       <h5 class="card-header"><b>{{ book3.volumeInfo.title }} </b>({{book.publish_date}})</h5>
+                       <div class="card-body">
+                         <h5 class="card-title"><i>{{ book3.volumeInfo.authors }}</i></h5>
+                         <p class="card-text">{{ book3.volumeInfo.description }}</p>
+                         {% comment %} <a href="{% url 'book_details' book_id=book.book_id %}" class="btn btn-primary">See Details</a> {% endcomment %}
+                       </div>
+                     </div>
+        
+                   </div>
+
+
+
+                   <div class="tab-pane fade pt-3" id="profile-change-password">
+                     <div class="card">
+                       <h5 class="card-header"><b>{{ book4.volumeInfo.title }} </b>({{book.publish_date}})</h5>
+                       <div class="card-body">
+                         <h5 class="card-title"><i>{{ book4.volumeInfo.authors }}</i></h5>
+                         <p class="card-text">{{ book4.volumeInfo.description }}</p>
+                         {% comment %} <a href="{% url 'book_details' book_id=book.book_id %}" class="btn btn-primary">See Details</a> {% endcomment %}
+                       </div>
+                     </div>
+                   </div>
+
+                   <div class="tab-pane fade pt-3" id="profile-change-password2">
+                     <div class="card">
+                       <h5 class="card-header"><b>{{ book5.volumeInfo.title }} </b>({{book.publish_date}})</h5>
+                       <div class="card-body">
+                         <h5 class="card-title"><i>{{ book5.volumeInfo.authors }}</i></h5>
+                         <p class="card-text">{{ book5.volumeInfo.description }}</p>
+                         {% comment %} <a href="{% url 'book_details' book_id=book.book_id %}" class="btn btn-primary">See Details</a> {% endcomment %}
+                       </div>
+                     </div>
+                   </div>
+                   </div>
+
+                
+                </div>
+
+              </div>
+            </div><!-- End Recent Sales -->
+
+
+          </div>
+        </div><!-- End Left side columns -->
+
+        <!-- Right side columns -->
+        <div class="col-lg-4">
+
+          <!-- Recent Activity -->
+          <div class="card">
+
+                   <div class="card-body pt-3">
+                    <h5 class="card-title">My Books <span>| All</span></h5>
+                    {% comment %} <div class="card-body"> {% endcomment %}
+    
+                      <table class="table table-borderless datatable">
+                        <thead>
+                          <tr>
+                            {% comment %} <th scope="col">Book ID</th> {% endcomment %}
+                            <th scope="col">Title</th>
+                            <th scope="col">Status</th>
+                            {% comment %} <th scope="col">Rating</th> {% endcomment %}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for book in books %}
+    
+                            <tr>
+                            {% comment %} <th scope="row"><a href="#">{{book.bookid}}</a></th> {% endcomment %}
+                            <td>{{book.bookname}}</td>
+                            <td><a href="#" class="text-primary">{{book.bookstatus}}</a></td>
+                            {% comment %} <td>{{book.bookrating}}</td> {% endcomment %}
+                          </tr>
+                          {%endfor%}
+                        </tbody>
+                      </table>
+    
+                      
+                
+                </div>
+             </div>
+          </div>
+
+          </div><!-- End Recent Activity -->
+
+        
+        </div><!-- End Right side columns -->
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+</div>
+  <!-- Vendor JS Files -->
+  <script src=" {% static 'static2/assets/js/apexcharts.min.js' %} "></script>
+  <script src=" {% static 'static2/assets/js/bootstrap.bundle.min.js' %} "></script>
+  <script src=" {% static 'static2/assets/js/chart.min.js' %} "></script>
+  <script src=" {% static 'static2/assets/js/echarts.min.js' %} "></script>
+  <script src=" {% static 'static2/assets/js/quill.min.js' %} "></script>
+  <script src=" {% static 'static2/assets/js/simple-datatables.js' %} "></script>
+  <script src=" {% static 'static2/assets/js/tinymce.min.js' %} "></script>
+  <script src=" {% static 'static2/assets/js/validate.js' %} "></script>
+  <script src=" {% static 'static2/assets/js/main.js' %} "></script> 
+  <script src=" {% static 'static2/notifications/notify.js' %} " type="text/javascript"></script> 
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'static2/assets/js/main.js"></script>
+
+</body>
+
+</html>

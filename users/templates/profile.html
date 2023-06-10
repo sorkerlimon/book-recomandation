@@ -1,0 +1,188 @@
+{% extends 'main2.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Main Section -->
+<main id="main" class="main">
+  <div class="pagetitle">
+
+     <h1>Profile</h1>
+     
+
+     <nav>
+        <ol class="breadcrumb">
+           <li class="breadcrumb-item"><a href="">Home</a></li>
+           <li class="breadcrumb-item">Users</li>
+           <li class="breadcrumb-item active">Profile</li>
+        </ol>
+     </nav>
+  </div>
+                  {% for message in messages %}
+                   <div class="alert {{ message.tags }}" role="alert">
+                       {{ message }}
+                   </div>
+                   {% endfor %}
+  {% comment %} <section class="section profile">
+     <div class="row">
+        <div class="col-xl-4">
+           <div class="card">
+              <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                 <img src="{{ profile.profile_image.url }}" alt="Profile" style="border-radius: 15%;">
+                 <h2>{{ profile.name }}</h2><br>
+                 <b>Account Created</b>
+                 <h6>{{profile.created}}</h6>
+              </div>   
+              {%if profile.ref_code%}
+              <div align="center">
+              <i>Share This code:</i> <p style="border: 2px solid green;padding: 5px;margin: 3px;"> <b>{{profile.ref_code}}</b></p>
+              </div>
+              <marquee> Access Token Activated </marquee>
+              {%endif%}
+              
+           </div>
+           <!-- <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                  {%if profile.ref_code%} Share This code: <p style="border: 1px solid green;padding: 5px;margin: 3px;"> {{profile.ref_code}}<p>
+                  {%else%}<p align='center'>No Access Code Available. Try Generating One!</p>{%endif%}
+                  <br><br>
+                  <form method="POST" action="{% url 'profile' %}">
+                     {% csrf_token %}
+                     <div align='center'>Generate Acceess Code/ Terminate Session <input type="checkbox"  name="tag" value={{ profile.id }} /></div><br>
+                     <div align='center'><button type="submit" class="btn btn-info">Submit</button></div>
+                     
+                  </form>
+            </div>             
+         </div> -->
+           
+        </div>
+        <div class="col-xl-8">
+           <div class="card">
+              <div class="card-body pt-3">
+                 <ul class="nav nav-tabs nav-tabs-bordered">
+                     <li class="nav-item"> <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button></li>
+                     <li class="nav-item"> <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button></li>
+                     <li class="nav-item"> <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button></li>
+                     <li class="nav-item"> <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button></li>
+                 </ul>
+                 <div class="tab-content pt-2">
+                    <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                       <h5 class="card-title">Profile Details</h5>
+                       <div class="row">
+                          <div class="col-lg-3 col-md-4 label ">Full Name</div>
+                          <div class="col-lg-9 col-md-8">{{ profile.name }}</div>
+                       </div>
+
+                       <div class="row">
+                          <div class="col-lg-3 col-md-4 label">Email</div>
+                          <div class="col-lg-9 col-md-8">{{ profile.email }}</div>
+                       </div>
+                       <div class="row">
+                          <div class="col-lg-3 col-md-4 label">Phone</div>
+                          <div class="col-lg-9 col-md-8">(+88) {{ profile.phone_number }}</div>
+                       </div>
+                       <div class="row">
+                          <div class="col-lg-3 col-md-4 label">Gender</div>
+                          <div class="col-lg-9 col-md-8">{{ profile.gender }}</div>
+                       </div>
+                       <div class="row">
+                          <div class="col-lg-3 col-md-4 label">Address</div>
+                          <div class="col-lg-9 col-md-8">{{ profile.location }}</div>
+                       </div>
+                       <div class="row">
+                          <div class="col-lg-3 col-md-4 label">Blood</div>
+                          <div class="col-lg-9 col-md-8">{{ profile.blood }}</div>
+                       </div>
+                       <div class="row">
+                          <div class="col-lg-3 col-md-4 label">Date of Birth</div>
+                          <div class="col-lg-9 col-md-8">{{ profile.dob }}</div>
+                       </div>
+                       <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Age</div>
+                        <div class="col-lg-9 col-md-8">{{ year }} year, {{month}} month, {{days}} day</div>
+                     </div>
+                       <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">Share ID</div>
+                        <div class="col-lg-9 col-md-8">{{ profile.ref_code }}</div>
+                     </div>
+                    </div>
+
+
+
+                    <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+                        <form class="form" method="POST" action="{% url 'edit-account' %}" enctype="multipart/form-data"> 
+                           
+                           <!--calling profile edit form from view (action) -->
+                           {% csrf_token %}
+                           {% for field in form %}
+                              <div class="profile-edit pt-3">
+                                    <div class="row mb-3">
+                                       <label for="fullName" class="col-md-4 col-lg-3 col-form-label">{{field.label}} </label>
+
+                                       <div class="col-md-8 col-lg-9">{{field}}</div>
+                                    </div>
+                              </div>
+                           {% endfor %}
+                           <div class=""> <input type="submit" class="btn btn-primary " value="Submit" /></div>
+                        </form>
+                     </div>
+
+
+
+                     <div class="tab-pane fade pt-3" id="profile-settings">
+                                 
+
+                              <form method="POST" action="{% url 'profile' %}">
+                                 {% csrf_token %}
+                                 <div class="row mb-3">
+                                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Doctor's Access</label>
+                                    <div class="col-md-8 col-lg-9">
+                                       {% if not profile.ref_code %}
+                                       <div class="form-check"> <input class="form-check-input" type="checkbox" name="tag" value={{ profile.id }} > <label class="form-check-label" for="changesMade"> Generate Access Token for Doctor's </label></div>
+                           
+                                       <div class="form-check"> <input class="form-check-input" type="checkbox" name="tag" value={{ profile.id }} checked disabled> <label class="form-check-label" for="changesMade"> Terminate Doctor's Session </label></div>
+
+                                       {% else %}
+                                       <div class="form-check"> <input class="form-check-input" type="checkbox" name="tag" value={{ profile.id }} checked disabled > <label class="form-check-label" for="changesMade"> Generate Access Token for Doctor's</label></div>
+                           
+                                       <div class="form-check"> <input class="form-check-input" type="checkbox" name="tag" value={{ profile.id }} > <label class="form-check-label" for="changesMade"> Terminate Doctor's Session</label></div>
+                                       {%endif%}
+                                    </div>
+                                 </div>
+                                 <div class="text-center"> <button type="submit" class="btn btn-primary">Save Changes</button></div>
+                              </form>
+          
+                     </div>
+
+
+
+                     <div class="tab-pane fade pt-3" id="profile-change-password">
+                        <form>
+                           <div class="row mb-3">
+                              <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
+                              <div class="col-md-8 col-lg-9"> <input name="password" type="password" class="form-control" id="currentPassword"></div>
+                           </div>
+                           <div class="row mb-3">
+                              <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+                              <div class="col-md-8 col-lg-9"> <input name="newpassword" type="password" class="form-control" id="newPassword"></div>
+                           </div>
+                           <div class="row mb-3">
+                              <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
+                              <div class="col-md-8 col-lg-9"> <input name="renewpassword" type="password" class="form-control" id="renewPassword"></div>
+                           </div>
+                           <div class="text-center"> <button type="submit" class="btn btn-primary">Change Password</button></div>
+                        </form>
+                     </div>
+                     </div>
+
+                  
+
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+  </section> {% endcomment %}
+</main>
+
+{% endblock  %}
